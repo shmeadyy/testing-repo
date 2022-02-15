@@ -13,7 +13,7 @@ body:
       label: Version
       description: What version of Keycloak are you running?
     validations:
-      required: true
+      required: false
   - type: textarea
     attributes:
       label: Expected behavior
