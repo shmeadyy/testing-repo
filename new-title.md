@@ -4,7 +4,7 @@ And then the battle's not so bad? Who's brave enough to fly into something we al
 
 It must be wonderful. And why did 'I' have to take a cab? __I usually try to keep my sadness pent up inside where it can fester quietly as a mental illness.__ *Yes, I saw.* You were doing well, until everyone died.
 
-## Our love isn't any different from yours, except it's hotter, because I'm involved.
+## Headline 2
 
 Fry, you can't just sit here in the dark listening to classical music. Really?! Who are those horrible orange men? Oh, but you can. But you may have to metaphorically make a deal with the devil. And by "devil", I mean Robot Devil. And by "metaphorically", I mean get your coat.
 
