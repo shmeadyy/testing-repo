@@ -13,9 +13,9 @@ jobs:
       - uses: actions/checkout@v3
       - uses: mamuso/weekly-update-action@main
         with:
-          post_on: Mon
+          post_on: Wed
           remind_on: Thu
-          category: Team updates
+          category: General
           title: LT Weekly Update - Week of {{date}}
           repo: ${{ github.repository }}
           token: ${{ secrets.WEEKLY_UPDATE }}
