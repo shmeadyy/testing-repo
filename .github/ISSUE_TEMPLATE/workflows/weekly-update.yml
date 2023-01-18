@@ -18,7 +18,6 @@ jobs:
           category: Team updates
           title: LT Weekly Update - Week of {{date}}
           repo: ${{ github.repository }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.WEEKLY_UPDATE }}
           post_template: .github/weekly-templates/post.md
           remind_template: .github/weekly-templates/reminder.md
-
