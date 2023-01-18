@@ -1,0 +1,24 @@
+name: LT Weekly Update Discussion
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  weekly-test:
+    name: LT Weekly Update
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: mamuso/weekly-update-action@main
+        with:
+          post_on: Mon
+          remind_on: Thu
+          category: Team updates
+          title: LT Weekly Update - Week of {{date}}
+          repo: ${{ github.repository }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          post_template: .github/weekly-templates/post.md
+          remind_template: .github/weekly-templates/reminder.md
+
