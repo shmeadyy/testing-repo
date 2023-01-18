@@ -15,7 +15,7 @@ jobs:
         with:
           post_on: Wed
           remind_on: Thu
-          category: General
+          category: Team updates
           title: LT Weekly Update - Week of {{date}}
           repo: ${{ github.repository }}
           token: ${{ secrets.WEEKLY_UPDATE }}

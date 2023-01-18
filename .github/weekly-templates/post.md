@@ -22,6 +22,6 @@
 
 - 
 
-### Blog post content
+## Blog post content
 
 - 
