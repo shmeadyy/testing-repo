@@ -1,6 +1,7 @@
 name: Event Submission
 on:
   issues:
+    workflow_dispatch
     types:
       - opened
 
