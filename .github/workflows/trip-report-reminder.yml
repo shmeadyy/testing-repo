@@ -1,10 +1,10 @@
 name: Trip Report Reminder
 
 on:
+  workflow_dispatch:
   issues:
     types: 
       -opened
-      workflow_dispatch:
 
 jobs:
   send-overdue-comment:
