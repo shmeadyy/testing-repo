@@ -1,0 +1,132 @@
+name: 💁🏽‍♀️ Event Request Form 🎙
+description: Use this form to let us know about a conference/event that you think GitHub should participate in (via sponsorship, attendance, talk requests, etc.)
+title: "Mon DD-DD, YYYY: EVENT_NAME"
+labels: ["Event-Automation", "⏳ pending review"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        :tada: Thanks for letting us know about an upcoming event! :tada:
+        
+        Use this form to let us know about a conference or event that either you've been invited to speak at or that you think GitHub should participate in.
+        Please fill out as much information as you can so that we can make an informed decision around our level of participation.
+
+        _Note: Please do not edit the form once submitted until the magic™️ automation does some parsing and reformatting. It should only take a minute! ✨_
+
+  - id: eventname
+    type: input
+    attributes:
+      label: Event Name
+    validations:
+      required: true
+      
+  - id: dates
+    type: input
+    attributes:
+      label: Event Dates
+      description: Event dates
+      placeholder: Mon DD-DD, YYYY
+    validations:
+      required: true
+
+  - id: eventhosttype
+    type: dropdown
+    attributes:
+      label: Hosting
+      description: "Is the event virtual, in person, or hybrid?"
+      options:
+        - Virtual
+        - In person
+        - Hybrid
+    validations:
+      required: true
+
+  - id: eventtype
+    type: dropdown
+    attributes:
+      label: Event Type
+      description: "Type of event"
+      options:
+        - Conference
+        - Meetup
+        - Workshop
+        - Hackathon
+        - Other
+    validations:
+      required: true
+
+  - id: url
+    type: input
+    attributes:
+      label: Event URL
+      description: "Web URL of event"
+      placeholder: "https://"
+      
+  - id: location
+    type: input
+    attributes:
+      label: Location
+      description: "Location of the event"
+
+  - id: eventdescription
+    type: input
+    attributes:
+      label: Event Description
+      description: "What is this event about?"
+  
+  - id: expectedparticipants
+    type: input
+    attributes:
+      label: Participants
+      description: "Expected number of participants"
+      placeholder: "###"
+  
+  - id: cfp
+    type: input
+    attributes:
+      label: Call for Proposal
+      description: "Link to Call for Proposal (CFP)"
+      placeholder: "https://"
+      
+  - id: cfpDeadline
+    type: input
+    attributes:
+      label: Deadline for CFP Submission
+      description: "Deadline for CFP Submission"
+      placeholder: Mon DD, YYYY
+
+
+  - id: participation
+    type: checkboxes
+    attributes:
+      label: Suggested Participation Level
+      description: "How do you think GitHub should participate at this event? Speaking? Others? Add additional detail in the field below. This is *not* an official confirmation of participation."
+      options:
+        - label: Speaker - technical or business
+        - label: Workshops - around Actions, GPR, etc.
+        - label: Specific meetings with os maintainers or community organizers
+        - label: Sponsorship - logo, funds, etc.
+        - label: Staff to engage with attendees (please list the specifics below)
+        - label: Swag
+        - label: Not sure yet
+
+  - id: why
+    type: textarea
+    attributes:
+      label: Why should GitHub participate in this event?
+      placeholder: "Please share how participation in this event accomplishes GitHub's goals."
+    validations:
+      required: true
+
+  - id: details
+    type: textarea
+    attributes:
+      label: Participation Details
+      description: "Who will be speaking/involved? If sponsorship is being requested, share a prospectus here."
+
+  - id: content
+    type: textarea
+    attributes:
+      label: Content
+      description: "What content will be used for the event? Any decks, articles, repos or demos?"
