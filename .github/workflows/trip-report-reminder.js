@@ -16,6 +16,10 @@ function checkDate(body) {
     const eventDates = body.getFormValue('EventDates')
     const today = new Date().toLocaleDateString();
 
+    if (eventDates < today){
+        console.log('Event is in the past');
+    }
+
     console.log(eventDates);
     console.log(today);
 }

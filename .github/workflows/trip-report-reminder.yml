@@ -7,25 +7,42 @@ on:
       -opened
 
 jobs:
-  send-overdue-comment:
+  parse_event_issue:
     runs-on: ubuntu-latest
-    steps:
-      - name: Check due date
-        id: check_due_date
-        uses: actions/github-script@v5
-        with:
-          script: |
-            const { data: issue } = await github.issues.get(context.issue);
-            const due_date = issue.due_on;
-            return { due_date };
 
-      - name: Send comment
-        if: ${{ steps.check_due_date.outputs.due_date < github.event.time }}
-        uses: actions/github-script@v5
+    outputs:
+      output: ${{ steps.parse_issue.outputs.result }}
+      applyChanges: ${{ steps.parse_issue.outputs.applyChanges }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Parse issue
+        uses: actions/github-script@v6
+        id: parse_issue
         with:
           script: |
-            const { data: assignee } = await github.issues.getAssignees(context.issue);
-            await github.issues.createComment({
-              ...context.issue,
-              body: `Hey @${assignee[0].login}, the due date has passed. Please update the status of this issue.`
-            });
+            const parsescript = require('.github/workflows/trip-report-reminder.js')
+            return parsescript({github, context})
+
+  # write-report-reminder-comment:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check due date
+  #       id: check_due_date
+  #       uses: actions/github-script@v5
+  #       with:
+  #         script: |
+  #           const { data: issue } = await github.issues.get(context.issue);
+  #           const due_date = issue.due_on;
+  #           return { due_date };
+
+  #     - name: Send comment
+  #       if: ${{ steps.check_due_date.outputs.due_date < github.event.time }}
+  #       uses: actions/github-script@v5
+  #       with:
+  #         script: |
+  #           const { data: assignee } = await github.issues.getAssignees(context.issue);
+  #           await github.issues.createComment({
+  #             ...context.issue,
+  #             body: `Hey @${assignee[0].login}, the due date has passed. Please update the status of this issue.`
+  #           });
