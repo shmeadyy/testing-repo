@@ -116,8 +116,6 @@ body:
     attributes:
       label: Why should GitHub participate in this event?
       placeholder: "Please share how participation in this event accomplishes GitHub's goals."
-    validations:
-      required: true
 
   - id: details
     type: textarea
