@@ -13,7 +13,7 @@ String.prototype.getFormValue = function (fieldName) {
 }
 
 function checkDate(body) {
-    const eventDates = body.getFormValue('EventDates')
+    const eventDates = body.getFormValue('EventDates');
     const today = new Date().toLocaleDateString();
 
     if (eventDates < today){
