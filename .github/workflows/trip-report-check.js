@@ -27,10 +27,12 @@ module.exports = ({github, context }) => {
     // If the report was submitted within a week, thank for it
     if (diff < 7 * 24 * 60 * 60 * 1000) {
         comment = 'Thank you for the trip report!';
+        
     } else {
         // If the report was submitted after a week, remind to send it sooner next time
         comment = 'Thank you for the trip report, but please try to send it within a week of the event date next time.';
     }
     }
+    console.log("Hey! The comment is coming: ");
     console.log(comment);
 };
