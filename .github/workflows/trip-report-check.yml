@@ -1,6 +1,7 @@
 # This is a sample workflow that checks if a trip report is completed
 name: Trip Report Check
 on:
+  workflow_dispatch:
   issues:
     types: [opened, edited]
 jobs:
