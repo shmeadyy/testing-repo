@@ -32,4 +32,5 @@ module.exports = ({github, context }) => {
         comment = 'Thank you for the trip report, but please try to send it within a week of the event date next time.';
     }
     }
+    console.log(comment);
 };
