@@ -12,7 +12,7 @@ jobs:
         uses: actions/github-script@v4
         with:
           script: |
-            const comment = require ('.github/workflows/trip-report-check.js')
+            const comment = require('.github/workflows/trip-report-check.js')
             // Post the comment to the issue
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
