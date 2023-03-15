@@ -1,0 +1,21 @@
+# This is a sample workflow that checks if a trip report is completed
+name: Trip Report Check
+on:
+  issues:
+    types: [opened, edited]
+jobs:
+  check-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check report
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const comment = require ('.github/workflows/trip-report-check.js')
+            // Post the comment to the issue
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
