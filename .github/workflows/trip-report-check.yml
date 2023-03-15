@@ -1,12 +1,17 @@
 # This is a sample workflow that checks if a trip report is completed
 name: Trip Report Check
+
 on:
   workflow_dispatch:
   issues:
     types: [opened, edited]
+
 jobs:
   check-report:
     runs-on: ubuntu-latest
+    outputs:
+      comment: ${{ steps.check_report.outputs.comment }}
+
     steps:
       - uses: actions/checkout@v2
       - name: Check report
@@ -20,8 +25,9 @@ jobs:
   post-comment:
     runs-on: ubuntu-latest
     needs: check-report
+
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/github-script@v6
       - name: Post comment
         env:
           COMMENT: ${{ needs.check-report.outputs.output }}
