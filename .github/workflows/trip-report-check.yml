@@ -15,10 +15,23 @@ jobs:
         with:
           script: |
             const comment = require('.github/workflows/trip-report-check.js')
+            return comment{(github, context)};
+
+  post-comment:
+    runs-on: ubuntu-latest
+    needs: check-report
+    steps:
+      - uses: actions/checkout@v2
+      - name: Post comment
+        env:
+          COMMENT: ${{ needs.check-report.outputs.output }}
+        with: 
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
             // Post the comment to the issue
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: comment
+              body: process.env.COMMENT
             });

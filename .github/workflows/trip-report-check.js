@@ -34,5 +34,5 @@ module.exports = ({github, context }) => {
     }
     }
     console.log("Hey! The comment is coming: ");
-    console.log(comment);
+    return comment;
 };
