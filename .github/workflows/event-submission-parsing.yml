@@ -14,6 +14,6 @@ jobs:
       - uses: actions/add-to-project@main
         with: 
           project-url: https://github.com/users/shmeadyy/projects/2/views/1
-          github-token: ${{ secrest.ADD_TO_PROJECT_PAT }}
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
           labeled: low-intent-event, high-intent-event
           label-operator: OR
