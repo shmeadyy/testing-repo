@@ -1,0 +1,207 @@
+name: ✨ Become a Speaker 🎤
+description: Speaker self-submission form for Hubbers
+title: "Bio: [name]"
+labels: 'speaker-review'
+assignees: shmeadyy
+
+body:
+  - type: markdown
+    attributes:
+       value: |
+         Thanks for requesting to be a speaker! We're excited to get to know you and get you ready to share about GitHub at conferences and events!  Before you submit your request, please answer these questions around the program agreement and manager approval.
+      
+  - id: program-agreement
+    type: checkboxes
+    attributes:
+      label: Program Agreement
+      description: "When you join this program, you are agreeing to: present yourself, GitHub and GitHub's products positively and professionally, ask questions and get approval from Comms/PR about any topics or content that you're unsure about, keep your bio current, let `@shmeadyy` know if you no longer want to be a involved in the program."
+      options:
+       - label: "Yes, I agree"
+       
+  - id: manager-approval
+    type: dropdown
+    attributes:
+      label: Does your manager know that you are signing up for this program?
+      options:
+        - "Yes, I've already informed them."
+        - "Not yet, but I'll let them know shortly."
+        - "No"
+      
+  - id: manager-contact
+    type: dropdown
+    attributes:
+      label: Can we contact your manager about participation in this program?
+      options:
+        - "Yes"
+        - "Not yet, but I'll let them know shortly."
+        - "No"
+      
+  - id: name
+    type: input
+    attributes: 
+      label: First & Last Name
+      description: "Your full name as you would like it displayed on a conference website or name badge"
+      placeholder: Mona Lisa Octocat
+    validations:
+      required: true
+      
+  - id: pronouns
+    type: dropdown
+    attributes:
+      label: Pronouns
+      options:
+        - she/her/hers
+        - he/him/his
+        - they/them
+    validations:
+      required: true
+  
+  - id: location
+    type: input
+    attributes:
+      label: Location
+      description: "What city, state and country do you live in? This is just where you're _primarily_ located so that we can match you with conferences located close to you."
+      placeholder: San Francisco, CA, United States
+    validations:
+      required: true
+  
+  - id: title
+    type: input
+    attributes:
+      label: Title/Team
+      description: "What's your title and the team that you're on?"
+      placeholder: Product Manager, Repos
+    validations:
+      required: true
+  
+  - id: languages
+    type: input
+    attributes:
+      label: Languages
+      description: "What languages do you speak? Please only include languages where you are a near fluent speaker (i.e. would feel confident answering questions from the audience about your presentation in that language!)"
+      placeholder: English
+    validations: 
+      required: true
+ 
+  - id: social
+    type: input
+    attributes:
+      label: Social media link
+      description: "Share a social account that you'd like to use as a public persona when speaking. This field is optional!"
+      placeholder: https://twitter.com/monatheoctocat
+  
+  - id: bio
+    type: textarea
+    attributes:
+      label: Bio
+      description: "Conferences often ask for short bios for speakers. Please share a short 2-3 sentence blurb about you, ideally written in the third-person."
+
+  - id: travel
+    type: dropdown
+    attributes:
+      label: Would you be willing to travel?
+      options:
+       - "Yes, send me anywhere, even internationally!"
+       - "Yes, I'm willing to fly within my country or state"
+       - "Yes, but I'd prefer to stay local (i.e. driving distance only)"
+       - "No, I'd prefer to participate in virtual events only"
+
+  - id: experience
+    type: input
+    attributes:
+      label: How would you rate your speaking experience?
+      description: On a scale of 1-5, 1 being a beginner and 5 being an expert
+  
+  - id: previous-events
+    type: checkboxes
+    attributes:
+      label: What are the types of events you've participated in before?
+      options:
+       - label: Panel interview (interviewer)
+       - label: Panel interview (interviewee)
+       - label: Workshop/Seminar
+       - label: Featured/Keynote Speaker
+       - label: Live Demo
+       - label: Booth Staff
+       - label: None yet!
+
+  - id: links
+    type: textarea
+    attributes:
+      label: Links to previous presentations or your Sessionize profile
+      description: Do you have links to previous talks you've given (demos, podcast interviews, etc.) or online portfolios relevant to your speaking interests (i.e. a Sessionize profile)?
+  
+  - id: github-topics
+    type: checkboxes
+    attributes:
+      label: General topics you feel most confident speaking about/presenting
+      options:
+       - label: Accessibility
+       - label: APIs
+       - label: CI/CD
+       - label: Cloud/Serverless infrastructure
+       - label: DevOps
+       - label: Enterprise
+       - label: Git
+       - label: Open Source
+       - label: Languages/Frameworks (i.e. GoLang, React, etc.)
+       - label: People Management/Career Development
+       - label: Security
+       - label: Other
+    
+  - id: github-products
+    type: checkboxes
+    attributes:
+      label: GitHub-specific products you could confidently speak/present about
+      options:
+        - label: Actions & Workflow Best Practices
+        - label: Advanced Security Products (i.e. Dependabot, Secret scanning, Code scanning)
+        - label: Apps / APIs
+        - label: Codespaces
+        - label: Copilot
+        - label: Desktop
+        - label: Enterprise Cloud / Enterprise Server
+        - label: Mobile
+        - label: Planning / Tracking
+        - label: Repositories / Issues / Pull Requests
+        - label: Other
+    
+  - id: additional-topics
+    type: textarea
+    attributes:
+      label: If you selected Other for any of the above, please share more topics here
+    
+  - id: types-of-events
+    type: checkboxes
+    attributes:
+      label: Types of events you'd like to participate in
+      options:
+        - label: Lead an interview (either 1-1 or a panel)
+        - label: Be interviewed (either 1-1 or a panel)
+        - label: Host a workshop/seminar
+        - label: Featured/Keynote speaker
+        - label: Give a live demo
+        - label: Staff a booth
+        - label: Any of the above
+    validations:
+       required: true
+      
+  - id: mentorship
+    type: dropdown
+    attributes:
+      label: If you're an experienced speaker, would you be willing to mentor a novice? 
+      options:
+        - "Yes"
+        - "No"
+        - "Maybe, but I'd like to learn more about what is expected of me"
+        - "I'm a novice"
+
+  - id: speaker-training
+    type: dropdown
+    attributes:
+      label: Would you be open to participating in GitHub-provided speaker training?
+      options: 
+        - "Yes, please"
+        - "No, thank you"
+    validations:
+      required: true
