@@ -7,70 +7,13 @@ on:
       - opened
 
 jobs:
-  parse_event_issue:
+  add-to-project:
+    name: Add issue to project
     runs-on: ubuntu-latest
-
-    outputs:
-      output: ${{ steps.parse_issue.outputs.result }}
-      applyChanges: ${{ steps.parse_issue.outputs.applyChanges }}
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Parse issue
-        uses: actions/github-script@v6
-        id: parse_issue
-        with:
-          script: |
-            const parsescript = require('.github/workflows/event-submission-parsing.js')
-            console.log(parsescript)
-            return parsescript({github, context})
-
-  update_issue:
-    name: Update DevRel Support Issue
-    runs-on: ubuntu-latest
-    needs: parse_event_issue
-    if: needs.parse_event_issue.outputs.applyChanges == 'true'
-    steps:
-
-      - name: Remove to be parsed label
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            await github.rest.issues.removeLabel({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              name: 'Event-Automation'
-            })
-      - name: Label issue with event host type
-        uses: actions/github-script@v6
-        env:
-          PARSED_DATA: ${{ needs.parse_event_issue.outputs.output }}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const labelsToAdd = JSON.parse(process.env.PARSED_DATA).labelsToAdd
-            
-            await github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: labelsToAdd
-            })
-      - name: Update body and title of issue
-        uses: actions/github-script@v6
-        env:
-          PARSED_DATA: ${{ needs.parse_event_issue.outputs.output }}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const parsedData = JSON.parse(process.env.PARSED_DATA)
-
-            await github.rest.issues.update({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: parsedData.newTitle,
-              body: parsedData.newBody
-            })
+      - uses: actions/add-to-project@main
+        with: 
+          project-url: https://github.com/users/shmeadyy/projects/2/views/1
+          github-token: ${{ secrest.ADD_TO_PROJECT_PAT }}
+          labeled: low-intent-event, high-intent-event
+          label-operator: OR
