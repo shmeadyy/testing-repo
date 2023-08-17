@@ -15,5 +15,5 @@ jobs:
         with: 
           project-url: https://github.com/users/shmeadyy/projects/2/views/1
           github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
-          labeled: low-intent-event, high-intent-event
+          labeled: "High Intent Event, Low Intent Event, low-intent-event, high-intent-event"
           label-operator: OR
