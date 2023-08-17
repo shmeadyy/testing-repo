@@ -13,38 +13,38 @@ String.prototype.getFormValue = function (fieldName) {
 }
 
 // reformat body
-function reformatBody(body) {
-    // get raw values
-    const eventName = body.getFormValue('Event Name')
-    const eventDates = body.getFormValue('Event Dates')
-    const eventUrl = body.getFormValue('Event URL')
-    const eventLocation = body.getFormValue('Location')
-    const eventType = body.getFormValue('Event Type')
-    const eventDescription = body.getFormValue('Event Description')
-    const participants = body.getFormValue('Participants')
-    const cfp = body.getFormValue('Call for Proposal')
-    const cfpDeadline = body.getFormValue('Deadline for CFP Submission')
+// function reformatBody(body) {
+//     // get raw values
+//     const eventName = body.getFormValue('Event Name')
+//     const eventDates = body.getFormValue('Event Dates')
+//     const eventUrl = body.getFormValue('Event URL')
+//     const eventLocation = body.getFormValue('Location')
+//     const eventType = body.getFormValue('Event Type')
+//     const eventDescription = body.getFormValue('Event Description')
+//     const participants = body.getFormValue('Participants')
+//     const cfp = body.getFormValue('Call for Proposal')
+//     const cfpDeadline = body.getFormValue('Deadline for CFP Submission')
 
-    // replace task lists with static values
-    newBody = body.replace(/- \[ \]/g, '❌ ').replace(/- \[X\]/g, '✅ ');
+//     // replace task lists with static values
+//     newBody = body.replace(/- \[ \]/g, '❌ ').replace(/- \[X\]/g, '✅ ');
 
-    // summarise essential details in a table rather than fields
-    newBody = `## ${eventName}
-Item | Specific
------| ---------
-Dates | ${eventDates}
-URL | ${eventUrl}
-Location | ${eventLocation}
-Type of Event | ${eventType}
-Event Description | ${eventDescription}
-Expected # of participants | ${participants}
-Link to Call for Proposals (CFP) | ${cfp}
-Deadline for CFP Submissions | ${cfpDeadline}
+//     // summarise essential details in a table rather than fields
+//     newBody = `## ${eventName}
+// Item | Specific
+// -----| ---------
+// Dates | ${eventDates}
+// URL | ${eventUrl}
+// Location | ${eventLocation}
+// Type of Event | ${eventType}
+// Event Description | ${eventDescription}
+// Expected # of participants | ${participants}
+// Link to Call for Proposals (CFP) | ${cfp}
+// Deadline for CFP Submissions | ${cfpDeadline}
 
-`
-     + newBody.substring(newBody.indexOf('Suggested Participation Level') - 4)
-    return newBody
-}
+// `
+//      + newBody.substring(newBody.indexOf('Suggested Participation Level') - 4)
+//     return newBody
+// }
 
 module.exports = ({ github, context }) => {
 
@@ -55,10 +55,9 @@ module.exports = ({ github, context }) => {
         if (label.name === 'Event-Automation') {
 
             // Pull out info from the issue body
-            const body = context.payload.issue.body
-            const eventName = body.getFormValue('Event Name')
-            const eventDates = body.getFormValue('Event Dates')
-            // to be replaced with or otherwise use labels
+            // const body = context.payload.issue.body
+            // const eventName = body.getFormValue('Event Name')
+            // const eventDates = body.getFormValue('Event Dates')
             const eventHostType = body.getFormValue('Hosting')
 
             let labelsToAdd = []
@@ -66,15 +65,15 @@ module.exports = ({ github, context }) => {
             labelsToAdd.push(eventHostType)
 
             // ensure new title is correct
-            newTitle = eventDates + ' : ' + eventName
+            // newTitle = eventDates + ' : ' + eventName
             // reformat the body
-            newBody = reformatBody(body)
+            // newBody = reformatBody(body)
 
             console.log('::set-output name=applyChanges::true')
             return {
                 labelsToAdd: labelsToAdd,
-                newTitle: newTitle,
-                newBody: newBody
+                // newTitle: newTitle,
+                // newBody: newBody
             }
         }
     }
